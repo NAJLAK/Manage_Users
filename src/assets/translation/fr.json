@@ -1,0 +1,13 @@
+{
+  "home": "Acceuil",
+  "manage": "Gérer les utilisateurs",
+  "greetings": "Bienvenue à cette application test",
+  "first_name": "Prénom",
+  "last_name": "Nom",
+  "update": "Modifier",
+  "delete": "Supprimer",
+  "confirmation": "Êtes-vous sûre de supprimer cet utilisateur?",
+  "success": "L'utilisateur a été supprimé avec succés",
+  "fail": "Échec de suppression de l'utilisateur",
+  "cancel": "L'opération a été annulée"
+}

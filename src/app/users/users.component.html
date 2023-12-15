@@ -1,0 +1,149 @@
+<div class="body">
+  <h5>{{ "manage" | translate }}</h5>
+  <button class="btn btn-primary" (click)="toggleAddUserForm()">Add User</button>
+  <div *ngIf="showAddUserForm">
+    <!-- Your form content goes here -->
+    <!-- For simplicity, let's assume you want to capture first name and last name -->
+    <form (submit)="addUser()">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+      <label for="avatar">Avatar URL:</label>
+      <input type="url" id="avatar" class="form-control" name="avatar" [(ngModel)]="newUser.avatar" required>
+        </div>
+        <div class="form-group col-md-6">
+      <label for="firstName">First Name:</label>
+
+      <input type="text" id="first_name" class="form-control" name="first_name" [(ngModel)]="newUser.first_name" required>
+    </div>
+      
+
+
+    <div class="form-group col-md-6">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="last_name" class="form-control" name="last_name" [(ngModel)]="newUser.last_name" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="email">Email:</label>
+      <input type="email" id="email" class="form-control" name="email" [(ngModel)]="newUser.email" required>
+    </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </form>
+    
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Avatar</th>
+        <th scope="col">{{ "first_name" | translate }}</th>
+        <th scope="col">{{ "last_name" | translate }}</th>
+        <th scope="col">Email</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th scope="row">{{ user.id }}</th>
+        <td>
+          <img
+            [src]="user.avatar"
+            class="me-2 rounded-circle"
+            style="width: 25px"
+          />
+        </td>
+        <td>
+          {{ user.first_name }}
+        </td>
+        <td>
+          {{ user.last_name }}
+        </td>
+        <td>
+          <a [href]="'mailto:' + user.email">
+            {{ user.email }}
+          </a>
+        </td>
+        <td>
+          <div *ngIf="showUpdateForm && user.id === userToUpdate?.id">
+            <!-- <form (submit)="updateUser(userToUpdate.id)">
+              <label for="updateFirstName">Update First Name:</label>
+              <input type="text" id="updateFirstName" [(ngModel)]="userToUpdate.first_name" required>
+      
+              <label for="updateLastName">Update Last Name:</label>
+              <input type="text" id="updateLastName" [(ngModel)]="userToUpdate.last_name" required>
+      
+              <button type="submit">Update</button>
+            </form> -->
+           <!-- Update User Form -->
+            <form (submit)="updateUser(userToUpdate.id)">
+              <div class="form-row">
+              <label for="updateFirstName">Update First Name:</label>
+              <div  class="col">
+              <input type="text" class="form-control" id="updateFirstName" [(ngModel)]="userToUpdate.first_name" required>
+              </div>
+
+              <label for="updateLastName">Update Last Name:</label>
+              <div class="col">
+              <input type="text" class="form-control" id="updateLastName" [(ngModel)]="userToUpdate.last_name" required>
+              </div>
+
+              <button type="submit" class="btn btn-primary" >Update</button>
+            </div>
+            </form>
+
+            
+          </div>
+      
+          <div class="col">
+            <div ngbDropdown class="d-inline-block">
+              <button type="button" class="btn btn-outline-dark dropdown-toggle" id="actions" ngbDropdownToggle>
+                Actions
+              </button>
+              <div ngbDropdownMenu id="menu" class="menu" aria-labelledby="actions">
+                <button ngbDropdownItem (click)="showUpdateForm = true; userToUpdate = user">
+                  <img src="/assets/update.svg" width="20px" alt="Update" />
+                  <div>{{ "update" | translate }}</div>
+                </button>
+                <button ngbDropdownItem (click)="deleteUser(user.id)">
+                  <img src="/assets/delete.svg" width="20px" alt="Delete" />
+                  <div>{{ "delete" | translate }}</div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <ngb-pagination
+      [collectionSize]="12"
+      [pageSize]="6"
+      [page]="pageNumber"
+      [directionLinks]="true"
+      (pageChange)="refresh_users($event)"
+    ></ngb-pagination>
+  </div>
+
+  <ngb-alert
+    *ngIf="show_success"
+    type="success"
+    [dismissible]="true"
+    (closed)="success_closed()"
+    >{{ success_message_text | translate }}</ngb-alert
+  >
+  <ngb-alert
+    *ngIf="show_fail"
+    type="danger"
+    [dismissible]="true"
+    (closed)="fail_closed()"
+    >{{ fail_message_text | translate }}</ngb-alert
+  >
+  <ngb-alert
+    *ngIf="show_cancel"
+    type="info"
+    [dismissible]="true"
+    (closed)="cancel_closed()"
+    >{{ cancel_message_text | translate }}</ngb-alert
+  >
+</div>

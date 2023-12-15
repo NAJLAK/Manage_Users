@@ -1,0 +1,42 @@
+<header>
+  <div>
+    <h3>TP4:Gestion des utilisateurs</h3>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button
+          type="button"
+          class="btn btn-outline-light"
+          id="dropdownBasic1"
+          ngbDropdownToggle
+        >
+          <img [src]="getIconPath(selectedOption)" alt="Selected Icon" />
+          
+        </button>
+        <div
+          ngbDropdownMenu
+          aria-labelledby="dropdownBasic1"
+          class="menu"
+          container="body"
+        >
+          <button
+            ngbDropdownItem
+            (click)="selectOption('English'); changeLanguage('en')"y
+            
+          >
+            <img src="/assets/en.png" alt="English" />
+            <div class="label">EN</div>
+          </button>
+          <button
+            ngbDropdownItem
+            (click)="selectOption('French'); changeLanguage('fr')"
+          >
+            <img src="/assets/fr.png" alt="Français" />
+            <div class="label">FR</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

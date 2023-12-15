@@ -1,0 +1,36 @@
+.body {
+  padding: 15px;
+}
+
+table {
+  margin-top: 40px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  border: 0px;
+  gap: 5px;
+}
+
+.menu {
+  button:focus {
+    background-color: #212529;
+
+    img {
+      filter: invert(100%);
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+ngb-alert {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 1rem;
+}

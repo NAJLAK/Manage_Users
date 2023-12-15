@@ -1,0 +1,19 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Set the container height to fill the viewport */
+}
+
+app-header {
+  flex: 0 0 auto; /* Let the header component take its natural height */
+}
+
+.content {
+  flex: 1 1 auto; /* Let the body component fill the remaining height */
+  display: inline-flex;
+  width: 100%;
+}
+
+.main {
+  width: 100%;
+}

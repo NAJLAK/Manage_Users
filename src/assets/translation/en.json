@@ -1,0 +1,13 @@
+{
+  "home": "Home",
+  "manage": "Manage users",
+  "greetings": "Welcome to this test application",
+  "first_name": "First name",
+  "last_name": "Last name",
+  "update": "Update",
+  "delete": "Delete",
+  "confirmation": "Are you sure to delete this user?",
+  "success": "User deleted successfully",
+  "fail": "Failed to delete user",
+  "cancel": "The operation has been cancelled"
+}
